@@ -1,35 +1,40 @@
 package com.desenvolvimentoJava.crud.model;
 
+import com.fasterxml.jackson.annotation.JsonTypeId;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
+@Entity
+@Table(name="tb_user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
-
-    public Integer codigo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long codigo;
 
     public String nome;
 
     public String cpf;
 
-    public Date dataNascimento;
+    public Date aniversario;
 
     public User(){
-
     }
-    public User(Integer codigo, String nome, String cpf, Date dataNascimento ){
+    public User(Long codigo, String nome, String cpf, Date aniversario ){
         this.codigo = codigo;
         this.nome = nome;
         this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+        this.aniversario = aniversario;
     }
 
-    public Integer getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
-    public void setCodigo(Integer codigo){
+    public void setCodigo(Long codigo){
         this.codigo = codigo;
     }
 
@@ -47,10 +52,10 @@ public class User implements Serializable {
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
+    public Date getAniversario() {
+        return aniversario;
     }
-    public void setDataNascimento(Date dataNascimento){
-        this.dataNascimento = dataNascimento;
+    public void setDataNascimento(Date aniversario){
+        this.aniversario = aniversario;
     }
 }
